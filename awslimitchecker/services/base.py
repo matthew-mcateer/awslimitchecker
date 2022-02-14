@@ -369,10 +369,6 @@ class _AwsService(Connectable):
             return 0
         results = resp.get('MetricDataResults', [])
         if len(results) < 1 or len(results[0]['Values']) < 1:
-            logger.warning(
-                'No data points found for AWS/Usage metric %s with dimensions '
-                '%s; using value of zero!', metric_name, dimensions
-            )
             return 0
         logger.debug(
             'CloudWatch metric query returned value of %s with timestamp %s',
